@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h3> {{msg}} </h3>
+    <h3> {{count}} </h3>
+    <h1>v-text</h1>
+    <h1 v-text="msg"></h1>
+    <h1>v-model</h1>
+    <input type="text" v-model="msg" />
+    <input type="text" v-model="count"/>
+    <div v-html="appHtml" v-on:click="HtmlClick"></div>
+    <div @click="clickEvent">点击事件</div>
+  </div>
+</body>
+<script src="./js/observer.js"></script>
+<script src="./js/compiler.js"></script>
+<script src="./js/vue.js"></script>
+<script>
+  let vm = new Vue({
+    el: '#app',
+    data: {
+      msg: 'Hello Vue',
+      count: 100,
+      person: {
+        name: '222'
+      },
+      appHtml: `<div><h2>富文本显示</h2></div>`
+    },
+    methods: {
+      HtmlClick: () => {
+        console.log('v-on 点击事件成功')
+      },
+      clickEvent: () => {
+        console.log('@click 改变成功')
+      }
+    }
+  })
+</script>
+
+</html>
